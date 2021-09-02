@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 *,
@@ -148,6 +148,7 @@ section {
   margin-left: 1rem;
   color: #a4a4a4;
 }
+
 /*
 .gradient-blue {
   background-color: linear-gradient( 45deg, #2FA3EB 0%, #2D9EEC 15%, #2073F1 70%, #1B63F3 100%);
