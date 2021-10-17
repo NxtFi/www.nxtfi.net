@@ -19,10 +19,10 @@ html {
 
 section {
   padding: 2rem 5rem 5rem 3rem;
-  /* padding: 1.56rem 5.75rem; */
 }
 
 #header {
+
   background-color: transparent;
   transition: all 0.5s;
 }
@@ -38,6 +38,31 @@ section {
   font-size: 1.13rem;
   font-weight: 600;
   color: white;
+}
+
+.navbar .ui-variable-logo .logo-default {
+  display: none;
+}
+
+.navbar .ui-variable-logo .logo-transparent {
+  display: block
+}
+
+.navbar.nav-scrolled .ui-variable-logo .logo-default {
+  display: block
+}
+
+.navbar.nav-scrolled .ui-variable-logo .logo-transparent {
+  display: none;
+}
+
+.nav-scrolled {
+  background-color: #fff !important;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-scrolled .container .navigation .nav-item a {
+  color: #1F6FF1;
 }
 
 .bgimage-hero {

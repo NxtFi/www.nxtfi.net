@@ -2,19 +2,31 @@
 
 (() => {
   const header = document.querySelector("#header");
+  const sectionOne = document.querySelector(".bgimage-hero");
 
   const faders = document.querySelectorAll(".fade-in");
 
   const sliders = document.querySelectorAll(".slide-in");
 
-  window.onscroll = function () {
-    var top = window.scrollY;
-    if (top >= 50) {
-      header.classList.add("active");
-    } else {
-      header.classList.remove("active");
-    }
+  const sectionOneOptions = {
+    rootMargin: "-200px 0px 0px 0px",
   };
+
+  const sectionOneObserver = new IntersectionObserver(function (
+    entries,
+    sectionOneObserver
+  ) {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        header.classList.add("nav-scrolled");
+      } else {
+        header.classList.remove("nav-scrolled");
+      }
+    });
+  },
+  sectionOneOptions);
+
+  sectionOneObserver.observe(sectionOne);
 
   const appearOptions = {
     threshold: 0,
