@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+
 html {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
@@ -201,6 +203,7 @@ section {
   height: 2.81rem;
   padding: 0.94rem 0 0.94rem 1.06rem;
 }
+
 .footer .bg-form form textarea {
   height: 7.81rem;
 }
@@ -236,4 +239,32 @@ section {
 .footer footer span {
   color: #fff;
   font-size: 1.13rem;
+}
+
+.from-left {
+  grid-column: 2 / 3;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.from-right {
+  grid-column: 3 / 4;
+  -webkit-transform: translateX(50%);
+  transform: translateX(50%);
+}
+
+.from-left,
+.from-right {
+  transition: opacity 250ms ease-in, -webkit-transform 400ms ease-in;
+  transition: opacity 250ms ease-in, transform 400ms ease-in;
+  transition: opacity 250ms ease-in, transform 400ms ease-in,
+    -webkit-transform 400ms ease-in;
+  opacity: 0;
+}
+
+.from-left.appear,
+.from-right.appear {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  opacity: 1;
 }
