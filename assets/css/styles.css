@@ -241,6 +241,15 @@ section {
   font-size: 1.13rem;
 }
 
+.fade-in {
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+}
+
+.fade-in.appear {
+  opacity: 1;
+}
+
 .from-left {
   grid-column: 2 / 3;
   -webkit-transform: translateX(-50%);

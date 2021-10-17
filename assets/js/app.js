@@ -3,6 +3,8 @@
 (() => {
   const header = document.querySelector("#header");
 
+  const faders = document.querySelectorAll(".fade-in");
+
   const sliders = document.querySelectorAll(".slide-in");
 
   window.onscroll = function () {
@@ -33,6 +35,10 @@
     });
   },
   appearOptions);
+
+  faders.forEach((fader) => {
+    appearOnScroll.observe(fader);
+  });
 
   sliders.forEach((slider) => {
     appearOnScroll.observe(slider);
