@@ -22,14 +22,15 @@ section {
 }
 
 #header {
-
   background-color: transparent;
   transition: all 0.5s;
 }
 
-#header.active {
-  background: linear-gradient(45deg, #2d9cecd0 0%, #2073f1 50%, #2fa3eb 100%);
-  transition: all 0.5s;
+.navigation .nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .navigation .nav .nav-item a {
@@ -63,6 +64,10 @@ section {
 
 .nav-scrolled .container .navigation .nav-item a {
   color: #1F6FF1;
+}
+
+.nav-scrolled .container button {
+  background: #3B96FE;
 }
 
 .bgimage-hero {
@@ -188,7 +193,6 @@ section {
   background-repeat: no-repeat;
   background-position: cover;
   background-size: cover;
-  /* background-attachment: fixed; */
   position: relative;
 }
 
