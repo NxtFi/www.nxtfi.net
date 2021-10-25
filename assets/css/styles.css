@@ -21,7 +21,13 @@ html {
 }
 
 section {
-    padding: 2rem 5rem 5rem 3rem;
+    padding: 1.4rem;
+}
+
+@media (min-width: 768px) {
+    section {
+        padding: 2rem 5rem 5rem 3rem;
+    }
 }
 
 @media screen and (max-width: 728px) {
@@ -163,12 +169,12 @@ section {
 
 .contain-blue p {
     color: #4e4e4e;
+    text-align: justify;
 }
 
 @media screen and (min-width: 728px) {
     .contain-blue h2 {
         text-align: right;
-
         font-size: 2.81rem;
     }
 
@@ -189,6 +195,7 @@ section {
 }
 
 .contain-blue-gray p {
+    text-align: justify;
     color: #a4a4a4;
 }
 
