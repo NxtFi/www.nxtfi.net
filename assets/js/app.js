@@ -2,7 +2,7 @@
 
 (() => {
   const header = document.querySelector("#header");
-  const sectionOne = document.querySelector(".bgimage-hero");
+  const sectionOne = document.querySelector(".hero");
 
   const faders = document.querySelectorAll(".fade-in");
 
