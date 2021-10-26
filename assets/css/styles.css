@@ -26,8 +26,13 @@ section {
 
 @media (min-width: 768px) {
     section {
-        padding: 2rem 5rem 5rem 3rem;
+        padding: 5rem 5rem 5rem 3rem;
     }
+
+    section:last-child {
+        padding-bottom: 0;
+    }
+
 }
 
 #header {
@@ -224,7 +229,7 @@ section {
     height: 828.99px;
     background: url(../img/bg-linear/Group\ 2.svg);
     background-repeat: no-repeat;
-    background-position: cover;
+    background-position: center;
     background-size: cover;
     position: relative;
 }
@@ -405,7 +410,7 @@ section {
     opacity: 1;
 }
 
-@media screen and (min-width: 991px) {
+/* @media screen and (min-width: 991px) {
     .from-left {
         grid-column: 2 / 3;
         -webkit-transform: translateX(-50%);
@@ -433,4 +438,4 @@ section {
         transform: translateX(0);
         opacity: 1;
     }
-}
+} */
