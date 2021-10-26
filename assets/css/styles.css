@@ -30,12 +30,6 @@ section {
     }
 }
 
-@media screen and (max-width: 728px) {
-    section img {
-        width: 100%;
-    }
-}
-
 #header {
     background-color: transparent;
     transition: all 0.5s;
@@ -246,6 +240,14 @@ section {
 }
 
 @media screen and (max-width: 728px) {
+    section img {
+        width: 100%;
+    }
+
+    .bg-light .container .row {
+        flex-direction: column-reverse;
+    }
+
     .bgimage-features img {
         width: 100%;
     }
