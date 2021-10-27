@@ -425,7 +425,7 @@ form>.col-12:last-child {
 /* ===================================================== */
 
 
-@media screen and (min-width: 992px) {
+/* @media screen and (min-width: 992px) {
     .fade-in {
         opacity: 0;
         transition: opacity 250ms ease-in;
@@ -462,4 +462,4 @@ form>.col-12:last-child {
         transform: translateX(0);
         opacity: 1;
     }
-}
+} */
