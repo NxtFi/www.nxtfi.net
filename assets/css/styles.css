@@ -21,10 +21,11 @@ html {
 }
 
 section {
-    padding: 1.4rem;
+    padding: 2.4rem;
 }
 
-@media screen and (min-width: 768px) {
+
+@media screen and (min-width: 576px) {
     section {
         padding: 5rem 5rem 5rem 3rem;
     }
@@ -261,16 +262,23 @@ form>.col-12:last-child {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-}   
+}
 
-@media screen and (max-width: 768px) {
-    section img {
-        width: 100%;
-    }
-
+@media screen and (max-width: 992px) {
     .bg-light .container .row {
         flex-direction: column-reverse;
     }
+
+
+}
+
+@media screen and (max-width: 576px) {
+    section img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
 
     .bgimage-features img {
         width: 100%;
@@ -398,7 +406,7 @@ form>.col-12:last-child {
     .footer .bg-form form {
         margin: 0 4rem;
     }
- 
+
     .footer .bg-form form textarea {
         height: 7.81rem;
     }
