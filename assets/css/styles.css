@@ -24,7 +24,7 @@ section {
     padding: 1.4rem;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     section {
         padding: 5rem 5rem 5rem 3rem;
     }
@@ -148,7 +148,7 @@ section {
     text-align: justify;
 }
 
-@media screen and (min-width: 728px) {
+@media screen and (min-width: 992px) {
     .contain-gray h2 {
         font-size: 2.81rem;
         text-align: left;
@@ -171,7 +171,7 @@ section {
     text-align: justify;
 }
 
-@media screen and (min-width: 728px) {
+@media screen and (min-width: 992px) {
     .contain-blue h2 {
         text-align: right;
         font-size: 2.81rem;
@@ -198,7 +198,7 @@ section {
     color: #a4a4a4;
 }
 
-@media screen and (min-width: 728px) {
+@media screen and (min-width: 992px) {
     .contain-blue-gray h2 {
         color: #959595;
         font-size: 2.63rem;
@@ -233,26 +233,26 @@ section {
     position: relative;
 }
 
-.bgimage-features:last-child{
+.bgimage-features:last-child {
     padding-top: 5rem;
     background-position: top 3rem center;
 }
 
-.form-title{
+.form-title {
     padding-top: 2rem;
 }
 
-.form-footer{
+.form-footer {
     height: 100%;
 }
 
-form > .col-12:last-child{
+form>.col-12:last-child {
     margin: 1rem 0;
 }
 
-.footer .bg-form form button.btn-enviar{
+/* .footer .bg-form form button.btn-enviar {
     margin: 0;
-}
+} */
 
 .feature-text {
     text-align: center;
@@ -261,9 +261,9 @@ form > .col-12:last-child{
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-}
+}   
 
-@media screen and (max-width: 728px) {
+@media screen and (max-width: 768px) {
     section img {
         width: 100%;
     }
@@ -281,11 +281,12 @@ form > .col-12:last-child{
     }
 }
 
+
 .digital-vaccine h6 {
     color: #417fff;
 }
 
-@media screen and (min-width: 728px) {
+@media screen and (min-width: 992px) {
     .digital-vaccine h6 {
         color: #417fff;
         margin-left: 1rem;
@@ -356,7 +357,6 @@ form > .col-12:last-child{
     font-size: 1.13rem;
     color: white;
     width: 15.44rem;
-    margin-top: 2rem;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     border-radius: 0.63rem;
 }
@@ -388,7 +388,7 @@ form > .col-12:last-child{
 }
 
 
-@media screen and (min-width: 728px) {
+@media screen and (min-width: 992px) {
 
     .footer h2 {
         font-size: 3rem;
@@ -398,8 +398,7 @@ form > .col-12:last-child{
     .footer .bg-form form {
         margin: 0 4rem;
     }
-
-
+ 
     .footer .bg-form form textarea {
         height: 7.81rem;
     }
@@ -418,7 +417,10 @@ form > .col-12:last-child{
 /* ===================== Animations ==================== */
 /* ===================================================== */
 
-.fade-in {
+
+
+/* @media screen and (min-width: 992px) {
+    .fade-in {
     opacity: 0;
     transition: opacity 250ms ease-in;
 }
@@ -426,8 +428,7 @@ form > .col-12:last-child{
 .fade-in.appear {
     opacity: 1;
 }
-
-/* @media screen and (min-width: 991px) {
+    
     .from-left {
         grid-column: 2 / 3;
         -webkit-transform: translateX(-50%);
