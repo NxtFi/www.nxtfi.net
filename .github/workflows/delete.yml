@@ -6,9 +6,8 @@ env:
   BUILD_DEST_BASE_DIR: '${{ github.workspace }}/dist'
   COMMIT_SHA: '${{ github.sha }}'
   DOMAIN: 'nxtfi.net'
-  STACK_NAMES: '${{ github.repository }}'
-  SUBDOMAIN: 'vacunas'
-  REPO: '${{ github.repository }}'
+  STACK_NAME: 'www-nxtfi'
+  SUBDOMAIN: 'www'
   GIT_REF: '${{ github.event.ref }}'
   LOG_LEVEL: 'WARN'
   ROUTE53ID: Z0917055I4S6WZ587OJV
@@ -53,7 +52,7 @@ jobs:
         run: |
           cd .github/cdk/
           npm run cdk -- delete \
-            --stackName $BRANCH_REF_SLUG-$STACK_NAMES \
+            --stackName $STACK_NAME-$BRANCH_REF_SLUG \
             --bucketName $BUCKET_NAME \
             --originPath $BRANCH_REF_SLUG-$SUBDOMAIN/ \
             --telegramChatId $TELEGRAM_CHAT_ID \

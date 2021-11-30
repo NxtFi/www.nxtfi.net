@@ -3,12 +3,11 @@ on: 'push'
 
 env:
   BUCKET_NAME: 'nxtfi.net'
-  BUILD_DEST_BASE_DIR: '${{ github.workspace }}/src'
+  BUILD_DEST_BASE_DIR: '${{ github.workspace }}/dist'
   COMMIT_SHA: '${{ github.sha }}'
   DOMAIN: 'nxtfi.net'
-  STACK_NAMES: '${{ github.repository }}'
+  STACK_NAME: 'www-nxtfi'
   SUBDOMAIN: 'www'
-  REPO: '${{ github.repository }}'
   GIT_REF: '${{ github.ref }}'
   LOG_LEVEL: 'WARN'
   ROUTE53ID: Z0917055I4S6WZ587OJV
@@ -34,23 +33,22 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      # - name: Cache NPM
-      #   id: cache-npm
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: node_modules
-      #     key: node_modules-${{ hashFiles('yarn.lock') }}
-      # - name: Install modules
-      #   if: steps.cache-npm.outputs.cache-hit != 'true'
-      #   run: yarn install    
+      - name: Cache NPM
+        id: cache-npm
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('yarn.lock') }}
+      - name: Install modules
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: yarn install    
 
       - name: Override ENV for production build
         if: github.ref == 'refs/heads/master'
         run: |
           echo "SUB_DOMAIN=$SUBDOMAIN" >> $GITHUB_ENV
-          
-      # - name: Build www
-      #   run: yarn build
+      - name: Build www
+        run: yarn build
 
       - name: Cache CDK
         id: cache-cdk
@@ -58,7 +56,6 @@ jobs:
         with:
           path: .github/cdk/node_modules
           key: cdk-${{ hashFiles('.github/cdk/package.json') }}
-
       - name: Install CDK modules
         if: steps.cache-cdk.outputs.cache-hit != 'true'
         run: cd .github/cdk/ ; yarn install    
@@ -67,10 +64,10 @@ jobs:
         run: |
           cd .github/cdk/
           npm run cdk -- deploy \
-            --product $REPO \
+            --product $STACK_NAME \
             --environment $BRANCH_REF_SLUG \
-            --repository $REPO \
-            --stackName $BRANCH_REF_SLUG-$STACK_NAMES \
+            --repository $STACK_NAME \
+            --stackName $STACK_NAME-$BRANCH_REF_SLUG \
             --zoneId $ROUTE53ID \
             --zoneDomain $DOMAIN \
             --subDomain $SUB_DOMAIN \
