@@ -3,7 +3,7 @@ on: 'delete'
 
 env:
   BUCKET_NAME: 'nxtfi.net'
-  BUILD_DEST_BASE_DIR: '${{ github.workspace }}/dist'
+  BUILD_DEST_BASE_DIR: '${{ github.workspace }}/src'
   COMMIT_SHA: '${{ github.sha }}'
   DOMAIN: 'nxtfi.net'
   STACK_NAME: 'www-nxtfi'
