@@ -1,0 +1,30 @@
+{
+  "name": "@mw/cdk",
+  "version": "0.1.0",
+  "scripts": {
+    "cdk": "node -r ts-node/register/transpile-only ./bin/cli"
+  },
+  "devDependencies": {
+    "@types/mime-types": "2.1.1"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-certificatemanager": "1.125.0",
+    "@aws-cdk/aws-cloudfront": "1.125.0",
+    "@aws-cdk/aws-cloudfront-origins": "1.125.0",
+    "@aws-cdk/aws-lambda": "1.125.0",
+    "@aws-cdk/aws-lambda-nodejs": "1.125.0",
+    "@aws-cdk/aws-route53": "1.125.0",
+    "@aws-cdk/aws-route53-targets": "1.125.0",
+    "@aws-cdk/aws-s3": "1.125.0",
+    "@aws-cdk/core": "1.125.0",
+    "aws-cdk": "1.125.0",
+    "aws-sdk": "2.999.0",
+    "commander": "8.2.0",
+    "mime-types": "^2.1.34",
+    "p-throttle": "4.1.1",
+    "readdirp": "3.6.0",
+    "source-map-support": "0.5.20",
+    "telegram-send": "^1.0.0",
+    "ts-node": "10.1.0"
+  }
+}

@@ -1,0 +1,83 @@
+name: Push
+on: 'push'
+
+env:
+  BUCKET_NAME: 'nxtfi.net'
+  BUILD_DEST_BASE_DIR: '${{ github.workspace }}/src'
+  COMMIT_SHA: '${{ github.sha }}'
+  DOMAIN: 'nxtfi.net'
+  STACK_NAMES: '${{ github.repository }}'
+  SUBDOMAIN: 'www'
+  REPO: '${{ github.repository }}'
+  GIT_REF: '${{ github.ref }}'
+  LOG_LEVEL: 'WARN'
+  ROUTE53ID: Z0917055I4S6WZ587OJV
+  TELEGRAM_CHAT_ID: '-500970291'
+  TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+  CERTARN: arn:aws:acm:us-east-1:149962407454:certificate/d321868d-cea2-4f58-9fde-0d3fa340f7ff
+
+jobs:
+  build:
+    name: 'Build and deploy'
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set extra environment variables
+        run: |
+          BRANCH_REF_SLUG=$(./.github/cdk/bin/slugify "$GIT_REF")
+          echo "BRANCH_REF_SLUG=$BRANCH_REF_SLUG" >> $GITHUB_ENV
+          echo "SUB_DOMAIN=$BRANCH_REF_SLUG-$SUBDOMAIN" >> $GITHUB_ENV
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      # - name: Cache NPM
+      #   id: cache-npm
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: node_modules
+      #     key: node_modules-${{ hashFiles('yarn.lock') }}
+      # - name: Install modules
+      #   if: steps.cache-npm.outputs.cache-hit != 'true'
+      #   run: yarn install    
+
+      - name: Override ENV for production build
+        if: github.ref == 'refs/heads/master'
+        run: |
+          echo "SUB_DOMAIN=$SUBDOMAIN" >> $GITHUB_ENV
+          
+      # - name: Build www
+      #   run: yarn build
+
+      - name: Cache CDK
+        id: cache-cdk
+        uses: actions/cache@v2
+        with:
+          path: .github/cdk/node_modules
+          key: cdk-${{ hashFiles('.github/cdk/package.json') }}
+
+      - name: Install CDK modules
+        if: steps.cache-cdk.outputs.cache-hit != 'true'
+        run: cd .github/cdk/ ; yarn install    
+
+      - name: CloudFront, DNS, S3 Sync, Cache Invalidation
+        run: |
+          cd .github/cdk/
+          npm run cdk -- deploy \
+            --product $REPO \
+            --environment $BRANCH_REF_SLUG \
+            --repository $REPO \
+            --stackName $BRANCH_REF_SLUG-$STACK_NAMES \
+            --zoneId $ROUTE53ID \
+            --zoneDomain $DOMAIN \
+            --subDomain $SUB_DOMAIN \
+            --bucketName $BUCKET_NAME \
+            --certificateArn $CERTARN \
+            --buildPath $BUILD_DEST_BASE_DIR \
+            --originPath $BRANCH_REF_SLUG-$SUBDOMAIN/ \
+            --telegramChatId $TELEGRAM_CHAT_ID \
+            --telegramToken $TELEGRAM_TOKEN \
+            --telegramMessage "🚀 https://$SUB_DOMAIN.$DOMAIN/ deployed"
