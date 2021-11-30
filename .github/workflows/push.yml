@@ -33,22 +33,22 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Cache NPM
-        id: cache-npm
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('yarn.lock') }}
-      - name: Install modules
-        if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: yarn install    
+      # - name: Cache NPM
+      #   id: cache-npm
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: node_modules
+      #     key: node_modules-${{ hashFiles('yarn.lock') }}
+      # - name: Install modules
+      #   if: steps.cache-npm.outputs.cache-hit != 'true'
+      #   run: yarn install    
 
-      - name: Override ENV for production build
-        if: github.ref == 'refs/heads/master'
-        run: |
-          echo "SUB_DOMAIN=$SUBDOMAIN" >> $GITHUB_ENV
-      - name: Build www
-        run: yarn build
+      # - name: Override ENV for production build
+      #   if: github.ref == 'refs/heads/master'
+      #   run: |
+      #     echo "SUB_DOMAIN=$SUBDOMAIN" >> $GITHUB_ENV
+      # - name: Build www
+      #   run: yarn build
 
       - name: Cache CDK
         id: cache-cdk
