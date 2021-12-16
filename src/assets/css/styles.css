@@ -317,6 +317,54 @@ form>.col-12:last-child {
     }
 }
 
+/* solutions */
+/* .solutions {
+    background: #f5f5f5;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+} */
+.solutions h2 {
+    color: #417fff;
+    font-size: 2.5rem;
+}
+
+.solutions-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.solutions-list div {
+    padding: .18rem;
+}
+
+.solutions-list p {
+    color: #417fff;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.solutions-list div img {
+    width: 35rem;
+}
+
+@media screen and (min-width: 576px) {
+    .solutions-list div img {
+        width: 18rem;
+    }
+}
+@media screen and (min-width: 992px) {
+    .solutions-list div img {
+        width: 10rem;
+    }
+}
+
+
+
+
+
 /* ================================================= */
 /* ===================== Footer ==================== */
 /* ================================================= */
