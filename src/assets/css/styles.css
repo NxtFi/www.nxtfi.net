@@ -355,15 +355,12 @@ form>.col-12:last-child {
         width: 18rem;
     }
 }
+
 @media screen and (min-width: 992px) {
     .solutions-list div img {
         width: 10rem;
     }
 }
-
-
-
-
 
 /* ================================================= */
 /* ===================== Footer ==================== */
